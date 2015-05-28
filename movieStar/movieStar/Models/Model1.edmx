@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MVC_BOARD_TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_BOARD">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SUBJECT" Type="varchar" MaxLength="100" />
+          <Property Name="CONTENT" Type="text" />
+          <Property Name="WRITER" Type="varchar" MaxLength="30" />
+          <Property Name="INS_DATE" Type="datetime" />
+          <Property Name="READ_CNT" Type="int" />
+          <Property Name="IP_ADDR" Type="varchar" MaxLength="20" />
+          <Property Name="GBN" Type="varchar" MaxLength="20" />
+          <Property Name="t1" Type="int" />
+          <Property Name="t3" Type="int" />
+        </EntityType>
+        <EntityType Name="T_BOARD_02">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_NM" Type="varchar" MaxLength="20" />
+          <Property Name="PHONE_NUM" Type="varchar" MaxLength="20" />
+          <Property Name="INS_DATE" Type="datetime" />
+          <Property Name="t2" Type="int" />
+        </EntityType>
+        <EntityType Name="T_BOARD_CMT">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOARD_IDX" Type="int" />
+          <Property Name="CONTENT" Type="varchar" MaxLength="1000" />
+          <Property Name="INS_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="T_CODE">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODE_GROUP" Type="varchar" MaxLength="20" />
+          <Property Name="CODE" Type="varchar" MaxLength="20" />
+          <Property Name="CODE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="USE_YN" Type="varchar" MaxLength="1" />
+          <Property Name="ORD" Type="int" />
+        </EntityType>
+        <Function Name="SP_SSW_BOARD_CMT_DETAIL_SEL_03" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDX" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_SSW_BOARD_CMT_SEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CASE" Type="int" Mode="In" />
+          <Parameter Name="NEW_CMT_IDX" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_SSW_BOARD_PAGING_CNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SEARCH_COL" Type="varchar" Mode="In" />
+          <Parameter Name="SEARCH_KEY" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SSW_BOARD_PAGING_SEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SEARCH_COL" Type="varchar" Mode="In" />
+          <Parameter Name="SEARCH_KEY" Type="varchar" Mode="In" />
+          <Parameter Name="SORT_COL" Type="varchar" Mode="In" />
+          <Parameter Name="SORT_DIR" Type="varchar" Mode="In" />
+          <Parameter Name="PAGE" Type="int" Mode="In" />
+          <Parameter Name="PAGESIZE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_SSW_BOARD_PAGING_SEL_no_temptable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDER_OPT" Type="varchar" Mode="In" />
+          <Parameter Name="PAGE" Type="int" Mode="In" />
+          <Parameter Name="PAGESIZE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_TEST_TBOARD_02_SEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_TEST01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SEARCH_COL" Type="varchar" Mode="In" />
+          <Parameter Name="SEARCH_KEYWORD" Type="varchar" Mode="In" />
+          <Parameter Name="SEARCH_KEYWORD2" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_TEST02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SEARCH_COL" Type="varchar" Mode="In" />
+          <Parameter Name="SEARCH_KEYWORD" Type="varchar" Mode="In" />
+          <Parameter Name="SEARCH_KEYWORD3" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_JSH_SEL_TEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="arg1" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_SSW_BOARD_DEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDX" Type="int" Mode="In" />
+        </Function>
+        <Function Name="USP_SSW_BOARD_INS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SUBJECT" Type="varchar" Mode="In" />
+          <Parameter Name="CONTENT" Type="text" Mode="In" />
+          <Parameter Name="WRITER" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_SSW_BOARD_SEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ORDER_OPT" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="USP_SSW_BOARD_UPD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDX" Type="int" Mode="In" />
+          <Parameter Name="SUBJECT" Type="varchar" Mode="In" />
+          <Parameter Name="CONTENT" Type="text" Mode="In" />
+          <Parameter Name="WRITER" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="MVC_BOARD_TESTModelStoreContainer">
+          <EntitySet Name="T_BOARD" EntityType="Self.T_BOARD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_BOARD_02" EntityType="Self.T_BOARD_02" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_BOARD_CMT" EntityType="Self.T_BOARD_CMT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_CODE" EntityType="Self.T_CODE" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVC_BOARD_TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_BOARD">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SUBJECT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="WRITER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="INS_DATE" Type="DateTime" Precision="3" />
+          <Property Name="READ_CNT" Type="Int32" />
+          <Property Name="IP_ADDR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GBN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="t1" Type="Int32" />
+          <Property Name="t3" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_BOARD_02">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE_NUM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="INS_DATE" Type="DateTime" Precision="3" />
+          <Property Name="t2" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_BOARD_CMT">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOARD_IDX" Type="Int32" />
+          <Property Name="CONTENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="INS_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_CODE">
+          <Key>
+            <PropertyRef Name="IDX" />
+          </Key>
+          <Property Name="IDX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODE_GROUP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CODE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USE_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ORD" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="MVC_BOARD_TESTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_BOARD" EntityType="Self.T_BOARD" />
+          <EntitySet Name="T_BOARD_02" EntityType="Self.T_BOARD_02" />
+          <EntitySet Name="T_BOARD_CMT" EntityType="Self.T_BOARD_CMT" />
+          <EntitySet Name="T_CODE" EntityType="Self.T_CODE" />
+          <FunctionImport Name="SP_SSW_BOARD_CMT_DETAIL_SEL_03" ReturnType="Collection(MVC_BOARD_TESTModel.SP_SSW_BOARD_CMT_DETAIL_SEL_03_Result)">
+            <Parameter Name="IDX" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SSW_BOARD_CMT_SEL" ReturnType="Collection(MVC_BOARD_TESTModel.SP_SSW_BOARD_CMT_SEL_Result)">
+            <Parameter Name="CASE" Mode="In" Type="Int32" />
+            <Parameter Name="NEW_CMT_IDX" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SSW_BOARD_PAGING_CNT">
+            <Parameter Name="SEARCH_COL" Mode="In" Type="String" />
+            <Parameter Name="SEARCH_KEY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SSW_BOARD_PAGING_SEL">
+            <Parameter Name="SEARCH_COL" Mode="In" Type="String" />
+            <Parameter Name="SEARCH_KEY" Mode="In" Type="String" />
+            <Parameter Name="SORT_COL" Mode="In" Type="String" />
+            <Parameter Name="SORT_DIR" Mode="In" Type="String" />
+            <Parameter Name="PAGE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SSW_BOARD_PAGING_SEL_no_temptable" ReturnType="Collection(MVC_BOARD_TESTModel.SP_SSW_BOARD_PAGING_SEL_no_temptable_Result)">
+            <Parameter Name="ORDER_OPT" Mode="In" Type="String" />
+            <Parameter Name="PAGE" Mode="In" Type="Int32" />
+            <Parameter Name="PAGESIZE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TEST_TBOARD_02_SEL" ReturnType="Collection(MVC_BOARD_TESTModel.SP_TEST_TBOARD_02_SEL_Result)" />
+          <FunctionImport Name="SP_TEST01" ReturnType="Collection(MVC_BOARD_TESTModel.SP_TEST01_Result)">
+            <Parameter Name="SEARCH_COL" Mode="In" Type="String" />
+            <Parameter Name="SEARCH_KEYWORD" Mode="In" Type="String" />
+            <Parameter Name="SEARCH_KEYWORD2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TEST02" ReturnType="Collection(MVC_BOARD_TESTModel.SP_TEST02_Result)">
+            <Parameter Name="SEARCH_COL" Mode="In" Type="String" />
+            <Parameter Name="SEARCH_KEYWORD" Mode="In" Type="String" />
+            <Parameter Name="SEARCH_KEYWORD3" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_JSH_SEL_TEST" ReturnType="Collection(MVC_BOARD_TESTModel.USP_JSH_SEL_TEST_Result)">
+            <Parameter Name="arg1" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_SSW_BOARD_DEL">
+            <Parameter Name="IDX" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="USP_SSW_BOARD_INS">
+            <Parameter Name="SUBJECT" Mode="In" Type="String" />
+            <Parameter Name="CONTENT" Mode="In" Type="String" />
+            <Parameter Name="WRITER" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_SSW_BOARD_SEL" ReturnType="Collection(MVC_BOARD_TESTModel.USP_SSW_BOARD_SEL_Result)">
+            <Parameter Name="ORDER_OPT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="USP_SSW_BOARD_UPD">
+            <Parameter Name="IDX" Mode="In" Type="Int32" />
+            <Parameter Name="SUBJECT" Mode="In" Type="String" />
+            <Parameter Name="CONTENT" Mode="In" Type="String" />
+            <Parameter Name="WRITER" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_SSW_BOARD_CMT_DETAIL_SEL_03_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="Int32" Name="BOARD_IDX" Nullable="true" />
+          <Property Type="String" Name="CONTENT" Nullable="true" MaxLength="1000" />
+          <Property Type="DateTime" Name="INS_DATE" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SSW_BOARD_CMT_SEL_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="String" Name="SUBJECT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CONTENT" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="WRITER" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="INS_DATE" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="READ_CNT" Nullable="true" />
+          <Property Type="String" Name="IP_ADDR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GBN" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="t1" Nullable="true" />
+          <Property Type="Int32" Name="t3" Nullable="true" />
+          <Property Type="Int32" Name="CMT_IDX" Nullable="true" />
+          <Property Type="String" Name="CMT_CONTENT" Nullable="true" MaxLength="1000" />
+          <Property Type="DateTime" Name="NOWTIME_02" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SSW_BOARD_PAGING_SEL_no_temptable_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="String" Name="SUBJECT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CONTENT" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="WRITER" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="INS_DATE" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="READ_CNT" Nullable="true" />
+          <Property Type="String" Name="IP_ADDR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GBN" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="t1" Nullable="true" />
+          <Property Type="Int32" Name="t3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_TEST_TBOARD_02_SEL_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="String" Name="USER_NM" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="PHONE_NUM" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="INS_DATE" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="t2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_TEST01_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="String" Name="SUBJECT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="WRITER" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SP_TEST02_Result">
+          <Property Type="String" Name="SUBJECT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="WRITER" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="CONTENT" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="USP_JSH_SEL_TEST_Result">
+          <Property Type="String" Name="A" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="B" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="C" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="ARG1" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="USP_SSW_BOARD_SEL_Result">
+          <Property Type="Int32" Name="IDX" Nullable="false" />
+          <Property Type="String" Name="SUBJECT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CONTENT" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="WRITER" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="INS_DATE" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="READ_CNT" Nullable="true" />
+          <Property Type="String" Name="IP_ADDR" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="GBN" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVC_BOARD_TESTModelStoreContainer" CdmEntityContainer="MVC_BOARD_TESTEntities">
+          <EntitySetMapping Name="T_BOARD">
+            <EntityTypeMapping TypeName="MVC_BOARD_TESTModel.T_BOARD">
+              <MappingFragment StoreEntitySet="T_BOARD">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+                <ScalarProperty Name="READ_CNT" ColumnName="READ_CNT" />
+                <ScalarProperty Name="IP_ADDR" ColumnName="IP_ADDR" />
+                <ScalarProperty Name="GBN" ColumnName="GBN" />
+                <ScalarProperty Name="t1" ColumnName="t1" />
+                <ScalarProperty Name="t3" ColumnName="t3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_BOARD_02">
+            <EntityTypeMapping TypeName="MVC_BOARD_TESTModel.T_BOARD_02">
+              <MappingFragment StoreEntitySet="T_BOARD_02">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="USER_NM" ColumnName="USER_NM" />
+                <ScalarProperty Name="PHONE_NUM" ColumnName="PHONE_NUM" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+                <ScalarProperty Name="t2" ColumnName="t2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_BOARD_CMT">
+            <EntityTypeMapping TypeName="MVC_BOARD_TESTModel.T_BOARD_CMT">
+              <MappingFragment StoreEntitySet="T_BOARD_CMT">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="BOARD_IDX" ColumnName="BOARD_IDX" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_CODE">
+            <EntityTypeMapping TypeName="MVC_BOARD_TESTModel.T_CODE">
+              <MappingFragment StoreEntitySet="T_CODE">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="CODE_GROUP" ColumnName="CODE_GROUP" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="CODE_NAME" ColumnName="CODE_NAME" />
+                <ScalarProperty Name="USE_YN" ColumnName="USE_YN" />
+                <ScalarProperty Name="ORD" ColumnName="ORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_SSW_BOARD_CMT_DETAIL_SEL_03" FunctionName="MVC_BOARD_TESTModel.Store.SP_SSW_BOARD_CMT_DETAIL_SEL_03">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.SP_SSW_BOARD_CMT_DETAIL_SEL_03_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="BOARD_IDX" ColumnName="BOARD_IDX" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SSW_BOARD_CMT_SEL" FunctionName="MVC_BOARD_TESTModel.Store.SP_SSW_BOARD_CMT_SEL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.SP_SSW_BOARD_CMT_SEL_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+                <ScalarProperty Name="READ_CNT" ColumnName="READ_CNT" />
+                <ScalarProperty Name="IP_ADDR" ColumnName="IP_ADDR" />
+                <ScalarProperty Name="GBN" ColumnName="GBN" />
+                <ScalarProperty Name="t1" ColumnName="t1" />
+                <ScalarProperty Name="t3" ColumnName="t3" />
+                <ScalarProperty Name="CMT_IDX" ColumnName="CMT_IDX" />
+                <ScalarProperty Name="CMT_CONTENT" ColumnName="CMT_CONTENT" />
+                <ScalarProperty Name="NOWTIME_02" ColumnName="NOWTIME_02" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SSW_BOARD_PAGING_CNT" FunctionName="MVC_BOARD_TESTModel.Store.SP_SSW_BOARD_PAGING_CNT" />
+          <FunctionImportMapping FunctionImportName="SP_SSW_BOARD_PAGING_SEL" FunctionName="MVC_BOARD_TESTModel.Store.SP_SSW_BOARD_PAGING_SEL" />
+          <FunctionImportMapping FunctionImportName="SP_SSW_BOARD_PAGING_SEL_no_temptable" FunctionName="MVC_BOARD_TESTModel.Store.SP_SSW_BOARD_PAGING_SEL_no_temptable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.SP_SSW_BOARD_PAGING_SEL_no_temptable_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+                <ScalarProperty Name="READ_CNT" ColumnName="READ_CNT" />
+                <ScalarProperty Name="IP_ADDR" ColumnName="IP_ADDR" />
+                <ScalarProperty Name="GBN" ColumnName="GBN" />
+                <ScalarProperty Name="t1" ColumnName="t1" />
+                <ScalarProperty Name="t3" ColumnName="t3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TEST_TBOARD_02_SEL" FunctionName="MVC_BOARD_TESTModel.Store.SP_TEST_TBOARD_02_SEL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.SP_TEST_TBOARD_02_SEL_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="USER_NM" ColumnName="USER_NM" />
+                <ScalarProperty Name="PHONE_NUM" ColumnName="PHONE_NUM" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+                <ScalarProperty Name="t2" ColumnName="t2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TEST01" FunctionName="MVC_BOARD_TESTModel.Store.SP_TEST01">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.SP_TEST01_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TEST02" FunctionName="MVC_BOARD_TESTModel.Store.SP_TEST02">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.SP_TEST02_Result">
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_JSH_SEL_TEST" FunctionName="MVC_BOARD_TESTModel.Store.USP_JSH_SEL_TEST">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.USP_JSH_SEL_TEST_Result">
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="ARG1" ColumnName="ARG1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_SSW_BOARD_DEL" FunctionName="MVC_BOARD_TESTModel.Store.USP_SSW_BOARD_DEL" />
+          <FunctionImportMapping FunctionImportName="USP_SSW_BOARD_INS" FunctionName="MVC_BOARD_TESTModel.Store.USP_SSW_BOARD_INS" />
+          <FunctionImportMapping FunctionImportName="USP_SSW_BOARD_SEL" FunctionName="MVC_BOARD_TESTModel.Store.USP_SSW_BOARD_SEL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MVC_BOARD_TESTModel.USP_SSW_BOARD_SEL_Result">
+                <ScalarProperty Name="IDX" ColumnName="IDX" />
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="WRITER" ColumnName="WRITER" />
+                <ScalarProperty Name="INS_DATE" ColumnName="INS_DATE" />
+                <ScalarProperty Name="READ_CNT" ColumnName="READ_CNT" />
+                <ScalarProperty Name="IP_ADDR" ColumnName="IP_ADDR" />
+                <ScalarProperty Name="GBN" ColumnName="GBN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="USP_SSW_BOARD_UPD" FunctionName="MVC_BOARD_TESTModel.Store.USP_SSW_BOARD_UPD" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
