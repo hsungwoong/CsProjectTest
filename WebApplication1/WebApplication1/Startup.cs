@@ -9,7 +9,7 @@ namespace WebApplication1
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //added by jsh22
+            //added by jsh22//
         }
     }
 }
