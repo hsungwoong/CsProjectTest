@@ -1,10 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
-namespace WebApplication1
+[assembly: OwinStartupAttribute(typeof(movieStar.Startup))]
+namespace movieStar
 {
-    //test20150528 sw
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)

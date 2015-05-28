@@ -1,10 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
-namespace WebApplication1
+[assembly: OwinStartupAttribute(typeof(mybatisSample.Startup))]
+namespace mybatisSample
 {
-    //test20150528 sw
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
